@@ -1,0 +1,15 @@
+bin
+out
+data
+*.zip
+3rdparty*
+__pycache__
+__pycache__/
+__pycache__/*
+*site-packages
+*site-packages/
+*site-packages/*
+
+
+
+
