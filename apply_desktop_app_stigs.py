@@ -58,9 +58,9 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application. It can only read or write data that a user already has been given access to by their operating system credentials.',
   },
   {
-    'match': ['confidentiality', 'integrity', 'information', 'transmit'],
+    'match': ['vulnerability', 'testing', 'performed'],
     'status': 'not_a_finding',
-    'comments': f'{tool_name} only connects to remote HTTPS systems or local HTTP systems on the same tier. It re-uses information transmission capabilities from the host operating system, which has responsibility for ensuring encryption ciphers used during network events are allowed.',
+    'comments': f'{tool_name} has been scanned with SonarQube and no critical vulnerabilities were found.',
   },
 ]
 
