@@ -6,6 +6,8 @@ import json
 
 # asd_stig_xml = '/j/downloads/U_ASD_V5R3_STIG/U_ASD_V5R3_Manual_STIG/U_ASD_STIG_V5R3_Manual-xccdf.xml'
 
+is_debug_mode = 't' in os.environ.get('DEBUG', '') or '1' in os.environ.get('DEBUG', '')
+
 tool_name = os.environ.get('TOOL_NAME', 'The tool')
 
 auto_stigs = [
@@ -24,6 +26,41 @@ auto_stigs = [
     'match': ['exports', 'scrubbed'],
     'status': 'not_applicable',
     'comments': f'{tool_name} does not have exports.',
+  },
+  {
+    'match': ['low', 'resource', 'alert'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the already-existing Windows resource notifications to meet this rule.',
+  },
+  {
+    'match': [' dos ', 'attack', 'prevent'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application, and the only DoS attack vectors are the user typing too quickly on their keyboard.',
+  },
+  {
+    'match': ['activex', 'java applet', 'executed'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} does not download and execute any kind of remote code. Pre-existing local files and programs may be executed but these are not considered mobile code.',
+  },
+  {
+    'match': ['password', 'change'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} does not perform any user account or session management because it is a desktop application.',
+  },
+  {
+    'match': ['logout', 'session', 'ensure'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} does not perform any user account or session management because it is a desktop application.',
+  },
+  {
+    'match': ['not disclose', 'unecessary', 'information'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application. It can only read or write data that a user already has been given access to by their operating system credentials.',
+  },
+  {
+    'match': ['confidentiality', 'integrity', 'information', 'transmit'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} only connects to remote HTTPS systems or local HTTP systems on the same tier. It re-uses information transmission capabilities from the host operating system, which has responsibility for ensuring encryption ciphers used during network events are allowed.',
   },
 ]
 
@@ -45,16 +82,17 @@ for i in range(0, len(stigs)):
     #print(f'Processing: {rule_name}')
     print('.', end='', flush=True)
 
-    rule_text = stig_rules[j]['check_content'].lower() +'\n'+ stig_rules[j]['discussion'].lower()
+    rule_text = stig_rules[j]['group_title'].lower() +'\n'+stig_rules[j]['check_content'].lower() +'\n'+ stig_rules[j]['discussion'].lower()
 
     for auto_stig in auto_stigs:
       if all(needle.lower() in rule_text for needle in auto_stig['match']):
         # This rule is known to be trivial!
+        num_rules_stiginated += 1
         stig_rules[j]['comments'] = auto_stig['comments']
         stig_rules[j]['status'] = auto_stig['status']
-        matches = ', '.join(auto_stig['match'])
-        stig_rules[j]['finding_details'] = f'Matched "{matches}"'
-        num_rules_stiginated += 1
+        if is_debug_mode:
+          matches = ', '.join(auto_stig['match'])
+          stig_rules[j]['finding_details'] = f'Matched "{matches}"'
         break
 
 
