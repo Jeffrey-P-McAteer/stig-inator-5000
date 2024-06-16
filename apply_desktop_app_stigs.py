@@ -241,6 +241,26 @@ auto_stigs = [
     'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop application and does not manage, create, delete, perform logon events, or in any other way manipulate user accounts of any kind.',
   },
+  {
+    'match': ['attempt', 'privileges occur'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not manage, create, delete, or in any other way manipulate privileges of any kind.',
+  },
+  {
+    'match': ['attempt', 'security levels'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not manage, create, delete, or in any other way manipulate security levels of any kind.',
+  },
+  {
+    'match': ['attempt', 'security objects'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not manage, create, delete, or in any other way manipulate security objects of any kind.',
+  },
+  {
+    'match': ['must record', 'username', 'event'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} logs the Windows SAM name of the user using the tool when all log messages are created and stored',
+  },
 
 
 ]
