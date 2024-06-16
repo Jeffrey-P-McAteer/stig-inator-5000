@@ -231,6 +231,16 @@ auto_stigs = [
     'status': 'not_a_finding',
     'comments': f'{tool_name} is a desktop application and does not manage, maintain, or use credentials to grant access to itself. {tool_name} re-uses the existing Windows system to handle credentials, logon sessions, and access to data.',
   },
+  {
+    'match': ['publicly', 'accessible', 'application'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and is not publicly accessible.',
+  },
+  {
+    'match': ['user', 'accounts'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not manage, create, delete, or in any other way manipulate user accounts of any kind.',
+  },
 
 
 ]
