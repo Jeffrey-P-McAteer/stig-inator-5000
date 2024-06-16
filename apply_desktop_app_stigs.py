@@ -226,6 +226,12 @@ auto_stigs = [
     'status': 'not_a_finding',
     'comments': f'{tool_name} is a desktop application and does not manage, maintain, or use passwords.',
   },
+  {
+    'match': ['must', 'accept', 'credentials'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and does not manage, maintain, or use credentials to grant access to itself. {tool_name} re-uses the existing Windows system to handle credentials, logon sessions, and access to data.',
+  },
+
 
 ]
 
