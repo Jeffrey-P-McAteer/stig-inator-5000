@@ -172,6 +172,11 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application and has no remote access or remote diagnostic or remote maitenence capabilities.',
   },
   {
+    'match': ['audit', 'tools', 'audit data'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and only creates audit events, it does not manage, maintain, modify, delete, or grant any access to the audit systems it sends events to.',
+  },
+  {
     'match': ['application', 'decommission'],
     'status': 'not_a_finding',
     'comments': f'The team maintaining {tool_name} will manually reach out to affected users during any decommissioning events.',
@@ -210,6 +215,11 @@ auto_stigs = [
     'match': ['certificate', 'accepted trust anchor'],
     'status': 'not_a_finding',
     'comments': f'{tool_name} is a desktop application and uses the Windows opersting system trust store, making no certificate-related decisions of its own.',
+  },
+  {
+    'match': ['passwords'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and does not manage, maintain, or use passwords.',
   },
 
 ]
