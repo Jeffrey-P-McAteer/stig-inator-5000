@@ -177,6 +177,11 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application and only creates audit events, it does not manage, maintain, modify, delete, or grant any access to the audit systems it sends events to.',
   },
   {
+    'match': ['non-organizational users'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and does not grant any kind of user access to anything. It also does not manage, create, delete, or audit any kind of user account data because it does not perform logon events.',
+  },
+  {
     'match': ['application', 'decommission'],
     'status': 'not_a_finding',
     'comments': f'The team maintaining {tool_name} will manually reach out to affected users during any decommissioning events.',
