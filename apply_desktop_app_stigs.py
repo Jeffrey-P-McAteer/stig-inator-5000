@@ -239,7 +239,7 @@ auto_stigs = [
   {
     'match': ['user', 'accounts'],
     'status': 'not_applicable',
-    'comments': f'{tool_name} is a desktop application and does not manage, create, delete, or in any other way manipulate user accounts of any kind.',
+    'comments': f'{tool_name} is a desktop application and does not manage, create, delete, perform logon events, or in any other way manipulate user accounts of any kind.',
   },
 
 
