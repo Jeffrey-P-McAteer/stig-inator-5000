@@ -62,11 +62,168 @@ auto_stigs = [
     'status': 'not_a_finding',
     'comments': f'{tool_name} has been scanned with SonarQube and no critical vulnerabilities were found.',
   },
+  {
+    'match': ['defect', 'tracking', 'system'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the GitLab issue tracker to track defects.',
+  },
+  {
+    'match': ['code', 'coverage', 'statistics'],
+    'status': 'not_a_finding',
+    'comments': ' '.join([
+        f'{tool_name} cannot be unit-tested in an automatic manner because it derives significant behavior from WPF graphics, buttons of which',
+        'cannot be clicked automatically without breaking other cyber policies. The testing process in use is for end-users to perform testing and report defects.',
+        'Coverage statistics are tracked at the tool level.'
+    ]),
+  },
+  {
+    'match': ['code', 'review', 'conducted'],
+    'status': 'not_a_finding',
+    'comments': f'Primary developers review {tool_name} code regularly to remove unecessary components, or update components with modern replacements.',
+  },
+  {
+    'match': ['test', 'procedures', 'initialization', 'shutdown', 'aborts'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and inherrits the initialization, shutdown, and abort behavior of a windows process.',
+  },
+  {
+    'match': ['organization-defined', 'types', 'security', 'attributes', 'data as classified'],
+    'status': 'not_a_finding',
+    'comments': ' '.join([
+        f'{tool_name} carries forward user-specified security attribute metadata in the same format as other data attributes.',
+    ]),
+  },
+  {
+    'match': ['SOAP message'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not use SOAP authentication.',
+  },
+  {
+    'match': ['not utilize WS-Security tokens, this check is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not use WS-Security tokens.',
+  },
+  {
+    'match': ['does not utilize WSS or SAML assertions, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not use WSS or SAML assertions.',
+  },
+  {
+    'match': ['not utilize SAML assertions, this check is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not use SAML assertions.',
+  },
+  {
+    'match': ['audit', 'account', 'actions'],
+    'status': 'not_applicable',
+    'comments': ' '.join([
+        f'{tool_name} is a desktop application and makes no access-control decisions.',
+        'If a user is restricted from performing a task without {tool_name}, then using {tool_name} will not allow them to perform the task because an access exception will be thrown and logged.',
+    ]),
+  },
+  {
+    'match': ['execute', 'without', 'excessive', 'account', 'permissions'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and uses only the user\'s existing account permissions.',
+  },
+  {
+    'match': ['audit', 'privileged', 'functions'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application does not have any privileged functions.',
+  },
+  {
+    'match': ['review', 'audit', 'periodically'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application running on Windows. Windows operating system logs are reviewed by an operating system team periodically which meets this rule.',
+  },
+  {
+    'match': ['separate', 'network', 'segment'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not have components on different network segments.',
+  },
+  {
+    'match': ['configuration', 'management', 'repository'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the GitLab server to store code and configuration management data.',
+  },
+  {
+    'match': ['backup', 'restoration', 'application'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is backed up in GitLab.',
+  },
+  {
+    'match': ['supported by', 'vendor', 'development team'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is supported by the government developers who wrote it.',
+  },
+  {
+    'match': ['application contains classified data'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} does not contain classified data.',
+  },
+  {
+    'match': ['user guide', 'included', 'application'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} contains documentation embedded within the tool suitable for the purposes of a user guide.',
+  },
+  {
+    'match': ['remote', 'access'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and has no remote access or remote diagnostic or remote maitenence capabilities.',
+  },
+  {
+    'match': ['application', 'decommission'],
+    'status': 'not_a_finding',
+    'comments': f'The team maintaining {tool_name} will manually reach out to affected users during any decommissioning events.',
+  },
+  {
+    'match': ['threat', 'models'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application, and it\'s threat models are the same as the Windows operating system\'s threat models.',
+  },
+  {
+    'match': ['annual security training'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} developers and users have received organizationally-relevant security training before development even began.',
+  },
+  {
+    'match': ['coding standards'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} developers use their department\'s coding standards for the languages used to build {tool_name}.',
+  },
+  {
+    'match': ['application files', 'cryptographically hashed'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} developers build and deploy it in a single step, which means the integrity of the source code is the integrity of the application files. Source code integrity is maintained by GitLab.',
+  },
+  {
+    'match': ['input', 'vulnerabilities'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} may only be used by one user at a time, so any inputs specified by the user will only ever affect their data which removed the possibility of any system-level vulnerability from being possible no matter how those inputs are utilized.',
+  },
+  {
+    'match': ['certificate', 'authorities'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and uses the Windows opersting system trust store, making no certificate-related decisions of its own.',
+  },
+  {
+    'match': ['certificate', 'accepted trust anchor'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and uses the Windows opersting system trust store, making no certificate-related decisions of its own.',
+  },
+
 ]
 
+# ' '.join([
+#     f'{tool_name} is a desktop application and makes no access-control decisions.',
+#     'If a user is restricted from performing a task without {tool_name}, then using {tool_name} will not allow them to perform the task because an access exception will be thrown and logged.',
+# ]),
 
 
 test_checklist_file = '/j/downloads/TestChecklist.cklb'
+if len(sys.argv) > 1:
+  test_checklist_file = sys.argv[1]
+
 test_checklist = None
 with open(test_checklist_file, 'r') as fd:
   test_checklist = json.load(fd)
