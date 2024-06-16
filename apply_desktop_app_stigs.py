@@ -250,6 +250,9 @@ for i in range(0, len(stigs)):
         if is_debug_mode:
           matches = ', '.join(auto_stig['match'])
           stig_rules[j]['finding_details'] = f'Matched "{matches}"'
+        else:
+          if stig_rules[j]['finding_details'].startswith('Matched "'):
+            stig_rules[j]['finding_details'] = ''
         break
 
 
