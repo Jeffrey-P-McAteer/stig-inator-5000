@@ -286,7 +286,7 @@ if len(sys.argv) > 1:
 print(f'Opening checklist file {test_checklist_file}')
 
 test_checklist = None
-with open(test_checklist_file, 'r') as fd:
+with open(test_checklist_file, 'r', encoding='utf-8') as fd:
   test_checklist = json.load(fd)
 
 stigs = test_checklist['stigs']
@@ -342,7 +342,7 @@ for i in range(0, len(stigs)):
 test_checklist['stigs'] = stigs
 
 output_test_checklist_file = test_checklist_file #+'.auto.cklb'
-with open(output_test_checklist_file, 'w') as fd:
+with open(output_test_checklist_file, 'w', encoding='utf-8') as fd:
   json.dump(test_checklist, fd)
 print(f'Wrote to {output_test_checklist_file}')
 
