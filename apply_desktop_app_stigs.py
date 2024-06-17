@@ -271,8 +271,47 @@ auto_stigs = [
     'status': 'not_a_finding',
     'comments': f'{tool_name} logs the Windows SAM name of the user using the tool when all log messages are created and stored',
   },
-
-
+  # Below is new stuff! 2024-06-17
+  {
+    'match': ['emergency accounts'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop app and has no account management, creation, logon, or any other account-based access capability.',
+  },
+  {
+    'match': ['disable accounts'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop app and has no account management, creation, logon, or any other account-based access capability.',
+  },
+  {
+    'match': ['data protection requirements'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} reads and writes files managed by the Windows operating system environment, which is responsible for protecting application data.',
+  },
+  {
+    'match': ['data mining'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} does not specify protections for data mining because this does not affect a desktop application.',
+  },
+  {
+    'match': ['TODO TODO TODO'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} ',
+  },
+  {
+    'match': ['TODO TODO TODO'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} ',
+  },
+  {
+    'match': ['TODO TODO TODO'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} ',
+  },
+  {
+    'match': ['TODO TODO TODO'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} ',
+  },
 ]
 
 print(f'Using TOOL_NAME = {tool_name}')
