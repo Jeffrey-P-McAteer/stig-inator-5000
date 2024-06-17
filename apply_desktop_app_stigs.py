@@ -9,6 +9,16 @@ import json
 is_debug_mode = 't' in os.environ.get('DEBUG', '') or '1' in os.environ.get('DEBUG', '')
 
 tool_name = os.environ.get('TOOL_NAME', 'The tool')
+poc_name = ''
+try:
+  import win32api
+  import win32net
+  user_info = win32net.NetUserGetInfo(win32net.NetGetAnyDCName(), win32api.GetUserName(), 2)
+  poc_name = user_info['full_name']
+except:
+  pass
+poc_name = os.environ.get('POC_NAME', poc_name)
+
 
 auto_stigs = [
   {
@@ -265,15 +275,15 @@ auto_stigs = [
 
 ]
 
-# ' '.join([
-#     f'{tool_name} is a desktop application and makes no access-control decisions.',
-#     'If a user is restricted from performing a task without {tool_name}, then using {tool_name} will not allow them to perform the task because an access exception will be thrown and logged.',
-# ]),
+print(f'Using TOOL_NAME = {tool_name}')
+print(f'Using POC_NAME = {poc_name}')
 
 
 test_checklist_file = '/j/downloads/TestChecklist.cklb'
 if len(sys.argv) > 1:
   test_checklist_file = sys.argv[1]
+
+print(f'Opening checklist file {test_checklist_file}')
 
 test_checklist = None
 with open(test_checklist_file, 'r') as fd:
@@ -290,26 +300,44 @@ for i in range(0, len(stigs)):
     #print(f'Processing: {rule_name}')
     print('.', end='', flush=True)
 
-    rule_text = stig_rules[j]['group_title'].lower() +'\n'+stig_rules[j]['check_content'].lower() +'\n'+ stig_rules[j]['discussion'].lower()
+    rule_text = ' '.join([
+      stig_rules[j]['rule_title'].lower(),
+      stig_rules[j]['group_title'].lower(),
+      stig_rules[j]['check_content'].lower(),
+      stig_rules[j]['discussion'].lower(),
+    ])
 
     for auto_stig in auto_stigs:
       if all(needle.lower() in rule_text for needle in auto_stig['match']):
         # This rule is known to be trivial!
         num_rules_stiginated += 1
-        stig_rules[j]['comments'] = auto_stig['comments']
+        stig_rules[j]['finding_details'] = auto_stig['comments']
         stig_rules[j]['status'] = auto_stig['status']
         if is_debug_mode:
           matches = ', '.join(auto_stig['match'])
-          stig_rules[j]['finding_details'] = f'Matched "{matches}"'
+          stig_rules[j]['comments'] = f'Matched "{matches}"'
         else:
-          if stig_rules[j]['finding_details'].startswith('Matched "'):
-            stig_rules[j]['finding_details'] = ''
+          if len(stig_rules[j]['comments']) < 2 or stig_rules[j]['comments'].startswith('Matched "') or stig_rules[j]['comments'].startswith('POC: '):
+            stig_rules[j]['comments'] = f'POC: {poc_name}'
         break
 
+  num_open_rules = 0
+  num_not_reviewed_rules = 0
+  for j in range(0, len(stig_rules)):
+    if stig_rules[j]['status'].lower() == 'not_reviewed' or len(stig_rules[j]['status']) < 2:
+      num_not_reviewed_rules += 1
+    elif stig_rules[j]['status'].lower() == 'open':
+      num_open_rules += 1
+  percent_complete = (len(stig_rules) - (num_open_rules + num_not_reviewed_rules)) / max(1, len(stig_rules))
+  percent_complete *= 100.0
+  percent_complete = round(percent_complete, 1)
 
   stigs[i]['rules'] = stig_rules
   print()
   print(f'{num_rules_stiginated} of {len(stig_rules)} rules matched trivial groups and were automatically filled with the group data.')
+  print(f'{num_open_rules} are open, {num_not_reviewed_rules} are not reviewed of {len(stig_rules)} rules')
+  print(f'{percent_complete}% complete')
+  print()
 
 test_checklist['stigs'] = stigs
 
