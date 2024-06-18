@@ -333,6 +333,26 @@ auto_stigs = [
     'comments': f'{tool_name} logs user data access to JWAC logging framework.',
   },
   {
+    'match': ['events occurred'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} logs user data access to JWAC logging framework.',
+  },
+  {
+    'match': ['include a unique identifier'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses unique data in each log entry.',
+  },
+  {
+    'match': ['include an identifier'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses unique data in each log entry.',
+  },
+  {
+    'match': ['transaction logging'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} logs user data access to JWAC logging framework.',
+  },
+  {
     'match': ['session auditing'],
     'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop application that does not manage user sessions. {tool_name} has no administration capability, and therefore no administration or maitenence sessions either.',
@@ -351,6 +371,21 @@ auto_stigs = [
     'match': ['ports'],
     'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop application that does not bind to IP addresses, nor does it open and listen to ports.',
+  },
+  {
+    'match': ['logging architecture of the application'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework.',
+  },
+  {
+    'match': ['audit records'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework.',
+  },
+  {
+    'match': ['application logs'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework.',
   },
   {
     'match': ['TODO TODO TODO'],
