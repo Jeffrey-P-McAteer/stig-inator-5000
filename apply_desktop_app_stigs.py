@@ -293,6 +293,66 @@ auto_stigs = [
     'comments': f'{tool_name} does not specify protections for data mining because this does not affect a desktop application.',
   },
   {
+    'match': ['flow of information', 'organization-defined'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses JWAC and customer-defined processes for handling information storage, retrieval, and transmission.',
+  },
+  {
+    'match': ['logon'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop app and has no account management, creation, logon, or any other account-based access capability.',
+  },
+  {
+    'match': ['non-repudiation services', 'not defined'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not require non-repudiation services.',
+  },
+  {
+    'match': ['log aggregation'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework which does this.',
+  },
+  {
+    'match': ['event occurred'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework which does this.',
+  },
+  {
+    'match': ['logs are stored'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework which does this.',
+  },
+  {
+    'match': ['accesses to objects'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} logs user data access to JWAC logging framework.',
+  },
+  {
+    'match': ['direct access to the'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} logs user data access to JWAC logging framework.',
+  },
+  {
+    'match': ['session auditing'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not manage user sessions. {tool_name} has no administration capability, and therefore no administration or maitenence sessions either.',
+  },
+  {
+    'match': ['application shutdown events'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application, and shutdown events are handled according to the Windows policies already approved and in place.',
+  },
+  {
+    'match': ['IP addresses'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not bind to IP addresses, nor does it open and listen to ports.',
+  },
+  {
+    'match': ['ports'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not bind to IP addresses, nor does it open and listen to ports.',
+  },
+  {
     'match': ['TODO TODO TODO'],
     'status': 'not_a_finding',
     'comments': f'{tool_name} ',
