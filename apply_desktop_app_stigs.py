@@ -438,6 +438,26 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application and does not perform any authentication that is not managed by the operating system itself.',
   },
   {
+    'match': ['network connection'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and follows the operating system\'s configuration for all network connection creation, management, authorization, and destruction.',
+  },
+  {
+    'match': ['utilize', 'FIPS-validated', 'crypto'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses only the cryptographic libraries shipped by the Windows opersting system it runs on top of.',
+  },
+  {
+    'match': ['TODO TODO TODO'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} ',
+  },
+  {
+    'match': ['TODO TODO TODO'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} ',
+  },
+  {
     'match': ['TODO TODO TODO'],
     'status': 'not_a_finding',
     'comments': f'{tool_name} ',
