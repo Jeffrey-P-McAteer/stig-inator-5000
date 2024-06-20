@@ -388,9 +388,54 @@ auto_stigs = [
     'comments': f'{tool_name} uses the JWAC logging framework.',
   },
   {
-    'match': ['TODO TODO TODO'],
+    'match': ['high impact', 'real-time alert', 'audit failure event'],
     'status': 'not_a_finding',
-    'comments': f'{tool_name} ',
+    'comments': f'{tool_name} is not a high-impact tool and any audit failures will be contained to a single user\'s desk.',
+  },
+  {
+    'match': ['configuration changes', 'access restrictions'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} has no system-level configuration that would present a security problem if modified by a user, and {tool_name} is also a desktop application with no administration capability.',
+  },
+  {
+    'match': ['installation of patches'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is an in-house developed desktop application and has no capability to install patches, nor does the development team have any capability to generate patches for the application.',
+  },
+  {
+    'match': ['file restrictions', 'do not', 'limit write', 'access', 'library files'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is deployed in a folder with only developer write permissions.',
+  },
+  {
+    'match': ['application must prevent program execution'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and passes through the operating system\'s policy regarding application execution for the currently logged-in user operating the tool.',
+  },
+  {
+    'match': ['execution of authorized software programs'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and passes through the operating system\'s policy regarding application execution for the currently logged-in user operating the tool.',
+  },
+  {
+    'match': ['disable non-essential capabilities'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} has no non-essential capabilities',
+  },
+  {
+    'match': ['reauthenticate'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and does not perform any authentication that is not managed by the operating system itself.',
+  },
+  {
+    'match': ['authentication'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and does not perform any authentication that is not managed by the operating system itself.',
+  },
+  {
+    'match': ['verify', 'credentials'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application and does not perform any authentication that is not managed by the operating system itself.',
   },
   {
     'match': ['TODO TODO TODO'],
