@@ -483,24 +483,89 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application and has no web service capabilities.',
   },
   {
-    'match': ['TODO TODO TODO'],
+    'match': ['error messages', 'without revealing information'],
     'status': 'not_a_finding',
-    'comments': f'{tool_name} ',
+    'comments': f'{tool_name} does not generate error messages that would allow exploitation of the tool via information disclosure.',
   },
   {
-    'match': ['TODO TODO TODO'],
+    'match': ['reveal', 'messages', 'only to', 'ISSO'],
     'status': 'not_a_finding',
-    'comments': f'{tool_name} ',
+    'comments': f'{tool_name} uses the JWAC logging framework which performs this task.',
   },
   {
-    'match': ['TODO TODO TODO'],
-    'status': 'not_a_finding',
-    'comments': f'{tool_name} ',
+    'match': ['install'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that has no install or un-install capability. It is a stand-alone tool which is either loaded as a plug-in via another tool or executed directly by analysts without any installation.',
   },
   {
-    'match': ['TODO TODO TODO'],
+    'match': ['mobile code', 'not be used'],
     'status': 'not_a_finding',
-    'comments': f'{tool_name} ',
+    'comments': f'{tool_name} does not download and execute mobile code.',
+  },
+  {
+    'match': ['ensure', 'audit', 'retained'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework which performs this.',
+  },
+  {
+    'match': ['ISSO must report all suspected', 'IA poli'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} follows pre-existing JWAC policy.',
+  },
+  {
+    'match': ['DoD STIG', 'available'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} has a STIG checklist available.',
+  },
+  {
+    'match': ['continuity plan'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC JP continuity plan for desktop applications.',
+  },
+  {
+    'match': ['recovery is performed'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses existing JWAC backup systems for recovery operations.',
+  },
+  {
+    'match': ['Back-up copies'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses existing JWAC backup systems for recovery operations.',
+  },
+  {
+    'match': ['application does not implement key exchange, this check is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} does not implement key exchange.',
+  },
+  {
+    'match': ['tester must be designated', 'security flaws'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} has been tested for security flaws as part of JWAC acceptance criteria for application development.',
+  },
+  {
+    'match': ['If IA impact analysis is not performed, this is a finding'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} has had information assurance impact analysis performed during planning of the tool\'s development.',
+  },
+  {
+    'match': ['Security flaws', 'fix', 'plan'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} has security flaws fixed alongside reliability and performance flaws. This task is done by the original development team which then sends builds back out to users for testing.',
+  },
+  {
+    'match': ['update the Design Document'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name}\'s Readme file contains the design information and is tracked and updated alongside the code for {tool_name}.',
+  },
+  {
+    'match': ['administrator must be registered to receive update notifications'],
+    'status': 'not_a_finding',
+    'comments': f'The JWAC JP ISSO performs this role.',
+  },
+  {
+    'match': ['update', 'patch', 'available'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is an in-house developed desktop application and has no capability to install patches, nor does the development team have any capability to generate patches for the application.',
   },
 ]
 
