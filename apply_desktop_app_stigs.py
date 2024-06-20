@@ -419,22 +419,22 @@ auto_stigs = [
   },
   {
     'match': ['disable non-essential capabilities'],
-    'status': 'not_a_finding',
+    'status': 'not_applicable',
     'comments': f'{tool_name} has no non-essential capabilities',
   },
   {
     'match': ['reauthenticate'],
-    'status': 'not_a_finding',
+    'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop application and does not perform any authentication that is not managed by the operating system itself.',
   },
   {
     'match': ['authentication'],
-    'status': 'not_a_finding',
+    'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop application and does not perform any authentication that is not managed by the operating system itself.',
   },
   {
     'match': ['verify', 'credentials'],
-    'status': 'not_a_finding',
+    'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop application and does not perform any authentication that is not managed by the operating system itself.',
   },
   {
@@ -448,9 +448,39 @@ auto_stigs = [
     'comments': f'{tool_name} uses only the cryptographic libraries shipped by the Windows opersting system it runs on top of.',
   },
   {
-    'match': ['TODO TODO TODO'],
+    'match': ['if the application implements encryption'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} does not implement any encryption, key exchange, signature, or hashing functionality.',
+  },
+  {
+    'match': ['SAML'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and does not use WSS or SAML assertions.',
+  },
+  {
+    'match': ['isolate security functions'],
     'status': 'not_a_finding',
-    'comments': f'{tool_name} ',
+    'comments': f'{tool_name} has no security functions because it is a desktop application.',
+  },
+  {
+    'match': ['separate', 'execution', 'domain'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the pre-existing Windows sandbox for running executables which applies to all desktop applications on the system.',
+  },
+  {
+    'match': ['prevent', 'unauthorized', 'information transfer', ],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} reads and writes only to files and these files are subject to the existing Windows security policies regarding where that person may read or write data to/from.',
+  },
+  {
+    'match': ['denial', 'of', 'service'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} does not bind to network IPs or ports and thus cannot be used for any denial-of-service operations.',
+  },
+  {
+    'match': ['web service'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application and has no web service capabilities.',
   },
   {
     'match': ['TODO TODO TODO'],
