@@ -17,7 +17,9 @@ try:
   poc_name = user_info['full_name']
 except:
   pass
-poc_name = os.environ.get('POC_NAME', poc_name)
+
+if len(os.environ.get('POC_NAME', '')) > 0:
+  poc_name = os.environ.get('POC_NAME', poc_name)
 
 
 auto_stigs = [
