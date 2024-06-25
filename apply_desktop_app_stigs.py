@@ -613,7 +613,7 @@ for i in range(0, len(stigs)):
           matches = ', '.join(auto_stig['match'])
           stig_rules[j]['comments'] = f'Matched "{matches}"'
         else:
-          if len(stig_rules[j]['comments']) < 2 or stig_rules[j]['comments'].strip().startswith('Matched "') or stig_rules[j]['comments'].strip().startswith('POC:'):
+          if len(stig_rules[j]['comments']) < 3 or stig_rules[j]['comments'].strip().startswith('Matched "') or stig_rules[j]['comments'].strip().startswith('POC:'):
             stig_rules[j]['comments'] = f'POC: {poc_name}'
         break
 
