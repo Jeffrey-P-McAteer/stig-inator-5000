@@ -609,6 +609,11 @@ for i in range(0, len(stigs)):
         num_rules_stiginated += 1
         stig_rules[j]['finding_details'] = auto_stig['comments']
         stig_rules[j]['status'] = auto_stig['status']
+        # Minor fixup from our internal rules
+        if stig_rules[j]['status'].strip() == 'not_applicable' and not ('is not applicable' in rule_text):
+          # We say it's "not a finding"
+          stig_rules[j]['status'] = 'not_a_finding'
+
         if is_debug_mode:
           matches = ', '.join(auto_stig['match'])
           stig_rules[j]['comments'] = f'Matched "{matches}"'
