@@ -130,7 +130,7 @@ auto_stigs = [
     'status': 'not_applicable',
     'comments': ' '.join([
         f'{tool_name} is a desktop application and makes no access-control decisions.',
-        'If a user is restricted from performing a task without {tool_name}, then using {tool_name} will not allow them to perform the task because an access exception will be thrown and logged.',
+        f'If a user is restricted from performing a task without {tool_name}, then using {tool_name} will not allow them to perform the task because an access exception will be thrown and logged.',
     ]),
   },
   {
@@ -310,9 +310,44 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application and does not require non-repudiation services.',
   },
   {
+    'match': ['system clocks', 'record', 'clock' ],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework which uses the internal OS clock (specifically System.DateTime.Now) for recording timestamps, and system clock is mapped to UTC.',
+  },
+  {
+    'match': ['record time stamps', 'degree of precision'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} records timestamps at the millisecond precision level.',
+  },
+  {
+    'match': ['back up audit records', 'onto a different'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework regularly backs up audit logs across the entire network for app applications using the framework.',
+  },
+  {
+    'match': ['system failure', 'preserve', 'information necessary'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} appends global exceptions to any logs generated, including audit logs. These are sent to JWAC framework (which in turn goes to JSMS), and the long description contains exception text which identifies down to the line-of-source-code where something occurred.',
+  },
+  {
+    'match': ['reveal error messages only to the ISSO'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} uses the JWAC logging framework which is responsible for managing who has access to what information. Because {tool_name} is a desktop application there are no security problems with any of the messages logged; at most detail they identify the user using the tool, name of sub-component being used, lines of code where faults occurred, and timestamps of events. No sensitive information is provided to end users because there is no sensitive information that is possible to log, as {tool_name} is a desktop app.',
+  },
+  {
+    'match': ['verify correct operation of security functions'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} performs no security functions.',
+  },
+  {
+    'match': ['The ISSO must ensure'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} runs on a JCCE network where the ISSO performs this task; the desktop application follows JWAC policy to ensure the ISSO has all the information necessary.',
+  },
+  {
     'match': ['log aggregation'],
     'status': 'not_a_finding',
-    'comments': f'{tool_name} uses the JWAC logging framework which does this.',
+    'comments': f'{tool_name} uses the JWAC logging framework which aggregates logs according to a policy.',
   },
   {
     'match': ['event occurred'],
