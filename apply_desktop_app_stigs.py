@@ -280,6 +280,11 @@ auto_stigs = [
     'comments': f'{tool_name} does not provide log aggregation services.',
   },
   {
+    'match': ['if the application utilizes a centralized logging system that provides the audit processing failure alarms, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} utilizes a centralized logging system that provides the audit processing failure alarms (JWAC Logging Framework / JSMS).',
+  },
+  {
     'match': ['emergency accounts'],
     'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop app and has no account management, creation, logon, or any other account-based access capability.',
