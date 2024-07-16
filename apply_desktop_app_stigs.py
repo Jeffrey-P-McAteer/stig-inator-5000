@@ -275,6 +275,11 @@ auto_stigs = [
   },
   # Below is new stuff! 2024-06-17
   {
+    'match': ['if the application does not provide log aggregation services, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} does not provide log aggregation services.',
+  },
+  {
     'match': ['emergency accounts'],
     'status': 'not_applicable',
     'comments': f'{tool_name} is a desktop app and has no account management, creation, logon, or any other account-based access capability.',
