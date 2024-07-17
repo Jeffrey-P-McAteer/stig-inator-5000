@@ -12,7 +12,7 @@ is_debug_mode = 't' in os.environ.get('DEBUG', '') or '1' in os.environ.get('DEB
 
 tool_name = os.environ.get('TOOL_NAME', '')
 while len(tool_name.strip()) < 1:
-  tool_name = input('TOOL_NAME: ')
+  tool_name = input('TOOL_NAME: ').strip()
 
 poc_name = ''
 try:
@@ -26,6 +26,9 @@ except:
 if len(os.environ.get('POC_NAME', '')) > 0:
   poc_name = os.environ.get('POC_NAME', poc_name)
 
+while len(poc_name) < 1:
+  poc_name = input('POC_NAME: ').strip()
+
 if len(os.environ.get('POC_POSTFIX', '')) > 0:
   poc_name += ' '+os.environ.get('POC_POSTFIX', '')
 else:
@@ -38,6 +41,11 @@ poc_name += f" {datetime.datetime.today().strftime('%Y-%m-%d')}"
 
 auto_stigs = [
   # Strict, we-can-repeat-DISA-language matches
+  {
+    'match': ['if the application does not utilize SAML assertions, this check is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not utilize SAML assertions.',
+  },
   {
     'match': ['if the application does not utilize SAML assertions, this check is not applicable'],
     'status': 'not_applicable',
