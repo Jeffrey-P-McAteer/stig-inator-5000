@@ -3,12 +3,17 @@ import os
 import sys
 import shutil
 import json
+import time
+import datetime
 
 # asd_stig_xml = '/j/downloads/U_ASD_V5R3_STIG/U_ASD_V5R3_Manual_STIG/U_ASD_STIG_V5R3_Manual-xccdf.xml'
 
 is_debug_mode = 't' in os.environ.get('DEBUG', '') or '1' in os.environ.get('DEBUG', '')
 
-tool_name = os.environ.get('TOOL_NAME', 'The tool')
+tool_name = os.environ.get('TOOL_NAME', '')
+while len(tool_name.strip()) < 1:
+  tool_name = input('TOOL_NAME: ')
+
 poc_name = ''
 try:
   import win32api
@@ -21,8 +26,25 @@ except:
 if len(os.environ.get('POC_NAME', '')) > 0:
   poc_name = os.environ.get('POC_NAME', poc_name)
 
+if len(os.environ.get('POC_POSTFIX', '')) > 0:
+  poc_name += ' '+os.environ.get('POC_POSTFIX', '')
+else:
+  print('WARNING: POC_POSTFIX is empty, you usually want a value like POC_POSTFIX="JP6" in there!')
+  time.sleep(2)
+
+poc_name += f" {datetime.datetime.today().strftime('%Y-%m-%d')}"
+
+# valid 'status': values are ['open', 'not_a_finding', 'not_reviewed', 'not_applicable']
 
 auto_stigs = [
+  # Strict, we-can-repeat-DISA-language matches
+  {
+    'match': ['if the application does not utilize SAML assertions, this check is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not utilize SAML assertions.',
+  },
+  
+  # Fuzzy matches
   {
     'match': ['user', 'session'],
     # valid values are ['open', 'not_a_finding', 'not_reviewed', 'not_applicable']
