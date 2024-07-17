@@ -30,7 +30,7 @@ if len(os.environ.get('POC_POSTFIX', '')) > 0:
   poc_name += ' '+os.environ.get('POC_POSTFIX', '')
 else:
   print('WARNING: POC_POSTFIX is empty, you usually want a value like POC_POSTFIX="JP6" in there!')
-  time.sleep(2)
+  input('Press enter to continue')
 
 poc_name += f" {datetime.datetime.today().strftime('%Y-%m-%d')}"
 
