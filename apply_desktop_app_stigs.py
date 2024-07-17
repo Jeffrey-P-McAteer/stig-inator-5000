@@ -47,9 +47,139 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application that does not utilize SAML assertions.',
   },
   {
-    'match': ['if the application does not utilize SAML assertions, this check is not applicable'],
+    'match': ['if the application does not utilize soap messages, this check is not applicable'],
     'status': 'not_applicable',
-    'comments': f'{tool_name} is a desktop application that does not utilize SAML assertions.',
+    'comments': f'{tool_name} is a desktop application that does not utilize SOAP messages.',
+  },
+  {
+    'match': ['if the application does not utilize ws-security tokens, this check is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not utilize ws-security tokens.',
+  },
+  {
+    'match': ['if the application does not utilize wss or saml assertions, this requirement is not applicable', 'if the application does not utilize saml assertions, this check is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not utilize wss or saml assertions.',
+  },
+  {
+    'match': ['if there is no official requirement for shared or group application accounts, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that has no official requirement for shared or group application accounts, nor does the desktop app manage accounts in any way.',
+  },
+  {
+    'match': ['if official documentation exist that disallows the use of temporary user accounts within the application, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not have user accounts. Because {tool_name} does not have user accounts, it implicitly disallows the use of temporary user accounts.',
+  },
+  {
+    'match': ['if emergency accounts are not used, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that that does not have user accounts. Because {tool_name} does not have user accounts, any emergency accounts cannot be used.',
+  },
+  {
+    'match': ['if the application is configured to use an enterprise-based application user management capability that is stig compliant, the requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that is configured to use an enterprise-based application user management capability that is stig compliant.',
+  },
+  {
+    'match': ['if there are no data mining protections required, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that has data mining protections required.',
+  },
+  {
+    'match': ['if the application does not implement discretionary access controls, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that does not implement discretionary access controls. (Or any other kind of access control for that matter, it is a desktop application and inherits the operating system\'s access control).',
+  },
+  {
+    'match': ['if the user interface is only available via the os console, e.g., a fat client application installed on a gfe desktop or laptop, and that gfe is configured to display the dod banner, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that is only available via the os console, e.g., a fat client application which is installed and deployed on a gfe desktop which is configured to display the dod banner.',
+  },
+  {
+    'match': ['if the application is not publicly accessible, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that is not publicly accessible.',
+  },
+  {
+    'match': ['if the application documentation specifically states that non-repudiation services for application users are not defined as part of the application design, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that has documentation which specifically states that non-repudiation services for application users are not defined as part of the application design.',
+  },
+  {
+    'match': ['if the application does not provide log aggregation services, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that not provide log aggregation services, though it may use a logger which aggregates multiple applications worth of logs into one dashboard.',
+  },
+  {
+    'match': ['if a web-based application', 'this is not a finding'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application that is NOT a web-based application.',
+  },
+  {
+    'match': ['if the application generates session id creation event logs by default, and that behavior cannot be disabled, this is not a finding'],
+    'status': 'not_a_finding',
+    'comments': f'{tool_name} is a desktop application that generates session creation (aka application start-up) event logs by default and this behavior cannot be disabled.',
+  },
+  {
+    'match': ['if the application requirements do not call for compartmentalized data and data protection, this requirement is not applicable'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application whose requirements do not call for compartmentalized data and data protection as {tool_name} runs on an operating system which already provides this.',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable',
+    'comments': f'{tool_name} is a desktop application that ',
   },
   
   # Fuzzy matches
