@@ -18,6 +18,12 @@ test_checklist = None
 with open(test_checklist_file, 'r', encoding='utf-8') as fd:
   test_checklist = json.load(fd)
 
+apply_desktop_app_stigs_impl = ''
+with open('apply_desktop_app_stigs.py', 'r') as fd:
+   apply_desktop_app_stigs_impl = fd.read()
+   if not isinstance(apply_desktop_app_stigs_impl, str):
+      apply_desktop_app_stigs_impl = apply_desktop_app_stigs_impl.decode('utf-8')
+
 if_end_clauses_to_scan_for = [
   'is not applicable',
   'is not a finding'
@@ -54,7 +60,10 @@ for i in range(0, len(stigs)):
                     if rule_text[j:j+3] == ' if':
                         text_fragment = rule_text[j:i+len(end_clause)].strip()
                         if not text_fragment in rule_text_fragments:
-                            print(text_fragment)
+                            prefix = ''
+                            if text_fragment in apply_desktop_app_stigs_impl:
+                               prefix = '[E] '
+                            print(prefix+text_fragment)
                             rule_text_fragments.append(text_fragment)
                         break
 

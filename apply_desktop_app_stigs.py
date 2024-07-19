@@ -237,18 +237,113 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application that does not provide a separate tool in the form of a file which provides an ability to view and manipulate application log data, query data, or generate reports.',
   },
   {
+    'match': ['if a web-based application delegates session id creation to an application server, this is not a finding'],
+    'status': 'not_a_finding', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not manage sessions. If an active directory domain login constitutes a session, this session is delegated to the active directory domain server.',
+  },
+  {
+    'match': ['if the application generates audit logs by default when session ids are destroyed, and that behavior cannot be disabled, this is not a finding'],
+    'status': 'not_a_finding', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that generates audit logs by default when closed and this behavior cannot be disabled. Audit logs appear in the list of opened + closed applications from operating system logs.',
+  },
+  {
+    'match': ['if the system hosting the application has a separate file monitoring utility installed that is configured to identify changes to audit tools and alarm on changes to audit tools, this is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that uses the underlying cyber file monitoring utilities to identify changes to system files and alarm on those changes.',
+  },
+  {
+    'match': ['if the application does not provide a separate tool in the form of a file which provides an ability to view and manipulate application log data, query data or generate reports, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not provide a separate tool in the form of a file which provides an ability to view and manipulate application log data.',
+  },
+  {
+    'match': ['if the application utilizes an approved repository of approved software that has been tested and approved for all application users to install, this is not a finding'],
+    'status': 'not_a_finding', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that is only executed because it has been approved by JWAC and has been tested by JWAC for use on their systems. Any sub-components are accessed from either an approved network folder or an approved software artifact repository (Artifactory)',
+  },
+  {
+    'match': ['if the policy, terms, or conditions state there are no usage restrictions, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that is developed for JWAC use and has no usage restrictions.',
+  },
+  {
+    'match': ['if the application is not a configuration management or similar type of application designed to manage system processes and configurations, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that is not a configuration management or similar type of application designed to manage system processes and configurations.',
+  },
+  {
+    'match': ['if the application does not use group or shared accounts, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not use group or shared accounts.',
+  },
+  {
+    'match': ['if the application is designed to provide end-user, interactive application access only and does not use web services or allow connections from remote devices, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that is designed to provide end-user, interactive application access only and does not use web services or allow connections from remote devices.',
+  },
+  {
+    'match': ['this requirement does not apply to individual application user accounts'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that is used by an individual application user account, therefore this requirement does not apply.',
+  },
+  {
+    'match': ['if the application does not use passwords, the requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not use passwords.',
+  },
+  {
+    'match': ['if the application does not perform code signing or other cryptographic tasks requiring a private key, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not perform code signing or other cryptographic tasks requiring a private key. Any cryptography that occurs (ie user cert authentication to remote servers) happens through the Microsoft System Trust Store and is not handled by {tool_name}.',
+  },
+  {
+    'match': ['if the application does not provide authenticated access to a cryptographic module, the requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not provide authenticated access to a cryptographic module beyond what the host operating system has provided access to.',
+  },
+  {
+    'match': ['if the application does not host non-organizational users, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not host non-organizational users.',
+  },
+  {
+    'match': ['if the application is not intended to be available to federal government (non-dod) partners this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that not intended to be available to federal government (non-dod) partners.',
+  },
+  {
+    'match': ['if the application does not provide non-local maintenance and diagnostic capability, this requirement is not applicable'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that does not provide non-local maintenance and diagnostic capability.',
+  },
+  {
+    'match': ['if the application administrator is prevented from accessing the os by policy requirement or separation of duties requirements, this is not a finding'],
+    'status': 'not_a_finding', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that has no application administrators, and any administrators can only access the one system they are logged in to via a separate user account used for administration.',
+  },
+  {
     'match': ['ifREPLACEME'],
-    'status': 'not_applicable',
+    'status': 'not_applicable', # not_a_finding
     'comments': f'{tool_name} is a desktop application that ',
   },
   {
     'match': ['ifREPLACEME'],
-    'status': 'not_applicable',
+    'status': 'not_applicable', # not_a_finding
     'comments': f'{tool_name} is a desktop application that ',
   },
   {
     'match': ['ifREPLACEME'],
-    'status': 'not_applicable',
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that ',
+  },
+  {
+    'match': ['ifREPLACEME'],
+    'status': 'not_applicable', # not_a_finding
     'comments': f'{tool_name} is a desktop application that ',
   },
   
