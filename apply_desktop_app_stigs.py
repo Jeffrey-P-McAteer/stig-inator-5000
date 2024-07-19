@@ -322,9 +322,9 @@ auto_stigs = [
     'comments': f'{tool_name} is a desktop application that has no application administrators, and any administrators can only access the one system they are logged in to via a separate user account used for administration.',
   },
   {
-    'match': ['ifREPLACEME'],
-    'status': 'not_applicable', # not_a_finding
-    'comments': f'{tool_name} is a desktop application that ',
+    'match': [if a documented acceptance of risk is provided, this is not a finding'],
+    'status': 'not_a_finding', # not_a_finding
+    'comments': f'{tool_name} is a desktop application that has a documented acceptance of risk is provided.',
   },
   {
     'match': ['ifREPLACEME'],
